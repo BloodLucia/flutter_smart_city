@@ -7,7 +7,9 @@ class ServiceCategoriesPage extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('服务'),
+      ),
       body: const Center(
         child: Text('服务分类页面'),
       ),
