@@ -13,7 +13,7 @@ class FilterNewsList extends StatelessWidget {
   _buildNewsItem(News news, BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(NewsDetailPage(news: news));
+        Get.to(() => NewsDetailPage(news: news));
       },
       child: Container(
         padding: context.paddingNormal,
@@ -42,18 +42,15 @@ class FilterNewsList extends StatelessWidget {
                         style: const TextStyle(fontSize: 16),
                       ),
                       context.emptySizedHeightBoxLow,
-                      Text(
-                        news.content!,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Color(0xff6a8193)),
-                      ),
+                      Text(news.content!,
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(color: context.grey)),
                     ],
                   ),
                 ),
                 context.emptySizedWidthBoxLow,
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 500),
+                SizedBox(
                   width: 118,
                   height: 132,
                   child: ClipRRect(

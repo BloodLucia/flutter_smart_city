@@ -15,7 +15,7 @@ class ServiceCategories extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (index == 7) {
-          Get.to(const ServiceCategoriesPage());
+          Get.to(() => const ServiceCategoriesPage());
         } else {
           Get.toNamed(item.link!);
         }

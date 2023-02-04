@@ -19,28 +19,25 @@ class NewsDetailPage extends GetView {
           physics: const BouncingScrollPhysics(),
           children: [
             /// 新闻标题
-            Expanded(
-              flex: 1,
-              child: Container(
-                padding: context.paddingNormal,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      news.title!,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    context.emptySizedHeightBoxLow,
-                    Text(
-                      '发布时间: ${news.publishDate!}',
-                      style: context.textTheme.labelMedium!
-                          .copyWith(color: context.grey),
-                    ),
-                  ],
-                ),
+            Container(
+              padding: context.paddingNormal,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    news.title!,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  context.emptySizedHeightBoxLow,
+                  Text(
+                    '发布时间: ${news.publishDate!}',
+                    style: context.textTheme.labelMedium!
+                        .copyWith(color: context.grey),
+                  ),
+                ],
               ),
             ),
 
@@ -53,13 +50,10 @@ class NewsDetailPage extends GetView {
                 fit: BoxFit.cover,
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                padding: context.paddingNormal,
-                child: Text(news.content!,
-                    style: Theme.of(context).textTheme.bodyLarge),
-              ),
+            Container(
+              padding: context.paddingNormal,
+              child: Text(news.content!,
+                  style: Theme.of(context).textTheme.bodyLarge),
             ),
           ],
         ),
