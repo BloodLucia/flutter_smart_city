@@ -22,7 +22,7 @@ class HttpUtil {
     dio = Dio(options);
   }
 
-  /// 读取本地配置
+  /// 登录之后要保存 token 至本地，这里从本地获取 token
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
     if (Get.isRegistered<UserStore>() && UserStore.to.hasToken == true) {

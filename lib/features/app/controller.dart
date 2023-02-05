@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class AppController extends GetxController {
   final pageIndex = 0.obs;
 
-  final PageController pageController = PageController();
+  late PageController pageController;
 
   void handleNavBarTap(int index) {
     pageController.animateToPage(index,
@@ -13,6 +13,12 @@ class AppController extends GetxController {
 
   void handlePageChanged(int index) {
     pageIndex.value = index;
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController(initialPage: 0);
   }
 
   @override

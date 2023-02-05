@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_city_getx/core/styles/colors.dart';
 
 import '../extensions/extensions.dart';
 
@@ -21,7 +20,7 @@ class RoundedButton extends GestureDetector {
             width: width ?? double.infinity,
             height: height ?? 50,
             decoration: BoxDecoration(
-              color: AppColors.primary,
+              color: color ?? context.primaryColor,
               borderRadius: context.lowBorderRadius,
             ),
             child: Text(

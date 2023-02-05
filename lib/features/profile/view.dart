@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfilePage extends GetView {
+import '../auth/controller.dart';
+
+class ProfilePage extends GetView<AuthController> {
   const ProfilePage(this.title, {super.key});
 
   final String title;
@@ -11,7 +13,7 @@ class ProfilePage extends GetView {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: const Center(
-        child: Text('个人中心页面'),
+        child: Text('个人中心'),
       ),
     );
   }

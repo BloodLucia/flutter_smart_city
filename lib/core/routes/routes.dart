@@ -1,20 +1,23 @@
 import 'package:get/get.dart';
+import 'package:smart_city_getx/features/app/binding.dart';
+import 'package:smart_city_getx/features/auth/binding.dart';
 
 import '../../features/app/view.dart';
-import '../../features/auth/view/login_view.dart';
+import '../../features/auth/login_page.dart';
 import '../../features/home/view.dart';
 import '../../features/modules/modules.dart';
-import 'names.dart';
 
 class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
-      name: RouteNames.SIGN_IN,
-      page: () => LoginView(),
+      name: '/login',
+      page: () => const LoginPage(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: '/app',
       page: () => const AppPage(),
+      binding: ApplicationBinding(),
     ),
     GetPage(
       name: '/home',

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_city_getx/features/home/controller.dart';
 
 import '../../../core/extensions/extensions.dart';
 import '../../../core/models/news.dart';
 import '../../news_detail/view.dart';
 
-class FilterNewsList extends StatelessWidget {
+class FilterNewsList extends GetView<HomeController> {
   const FilterNewsList({super.key, required this.resources});
 
   final List<News> resources;
