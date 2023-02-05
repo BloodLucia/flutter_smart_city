@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/core/services/storage_service.dart';
+import 'package:smart_city_getx/core/services/storage.dart';
 import 'package:smart_city_getx/core/services/user_store.dart';
 
 import '../../core/apis/auth_api.dart';

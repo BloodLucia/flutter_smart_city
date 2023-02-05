@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/core/services/storage_service.dart';
+import 'package:smart_city_getx/core/services/storage.dart';
 
 import 'core/bindings/bindings.dart';
 import 'core/routes/routes.dart';

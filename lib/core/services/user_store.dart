@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/apis/auth_api.dart';
 import 'package:smart_city_getx/core/models/user.dart';
-import 'package:smart_city_getx/core/services/storage_service.dart';
+import 'package:smart_city_getx/core/services/storage.dart';
 
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
