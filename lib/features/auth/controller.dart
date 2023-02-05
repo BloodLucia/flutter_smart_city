@@ -8,6 +8,9 @@ import '../../core/apis/auth_api.dart';
 class AuthController extends GetxController {
   late final TextEditingController usernameCtrl;
   late final TextEditingController passwordCtrl;
+  final _hidePwd = true.obs;
+  get hidePwd => _hidePwd.value;
+  set hidePwd(value) => _hidePwd.value = value;
 
   void login() async {
     final result = await AuthAPI.login(

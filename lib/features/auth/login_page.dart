@@ -36,16 +36,21 @@ class LoginPage extends GetView<AuthController> {
                     ),
                   ),
                   context.emptySizedHeightBoxLow2x,
-                  TextFormField(
-                    controller: controller.passwordCtrl,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.visibility_off),
+                  Obx(
+                    () => TextFormField(
+                      controller: controller.passwordCtrl,
+                      obscureText: controller.hidePwd,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: IconButton(
+                          onPressed: () =>
+                              controller.hidePwd = !controller.hidePwd,
+                          icon: controller.hidePwd
+                              ? const Icon(Icons.visibility_off)
+                              : const Icon(Icons.visibility),
+                        ),
+                        labelText: '密码',
                       ),
-                      labelText: '密码',
                     ),
                   ),
                   context.emptySizedHeightBoxLow2x,

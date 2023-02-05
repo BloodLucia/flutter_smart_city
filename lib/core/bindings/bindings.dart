@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:smart_city_getx/features/profile/controller.dart';
 
 import '../../features/app/controller.dart';
 import '../../features/auth/controller.dart';
@@ -13,5 +14,6 @@ class AppBindings implements Bindings {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<ServiceController>(() => ServiceController());
     Get.lazyPut<AuthController>(() => AuthController());
+    Get.lazyPut<ProfileController>(() => ProfileController());
   }
 }
