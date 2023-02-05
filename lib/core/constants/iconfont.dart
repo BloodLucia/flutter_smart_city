@@ -26,4 +26,16 @@ class IconFont {
     fontFamily: 'IconFont',
     matchTextDirection: true,
   );
+
+  static const male = IconData(
+    0xe638,
+    fontFamily: 'IconFont',
+    matchTextDirection: true,
+  );
+
+  static const female = IconData(
+    0xe639,
+    fontFamily: 'IconFont',
+    matchTextDirection: true,
+  );
 }
