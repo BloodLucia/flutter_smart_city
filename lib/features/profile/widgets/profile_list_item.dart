@@ -6,12 +6,12 @@ class ProfileListItem extends StatelessWidget {
   const ProfileListItem({
     super.key,
     this.left,
-    this.right,
+    required this.right,
     required this.text,
   });
 
   final IconData? left;
-  final Widget? right;
+  final String right;
   final String text;
 
   @override
@@ -27,14 +27,10 @@ class ProfileListItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                const Icon(Icons.person),
-                context.emptySizedWidthBoxLow,
-                Text(text),
-              ],
-            ),
-            right ?? Container(),
+            Text(text),
+            right.isEmpty || right == 'null'
+                ? Text('未设置', style: TextStyle(color: context.grey))
+                : Text(right)
           ],
         ),
       ),

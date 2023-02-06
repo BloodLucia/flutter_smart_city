@@ -82,4 +82,26 @@ class HttpUtil {
     );
     return response.data;
   }
+
+  /// restful put 操作
+  Future put(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
+    Options requestOptions = options ?? Options();
+    requestOptions.headers = requestOptions.headers ?? {};
+    Map<String, dynamic>? authorization = getAuthorizationHeader();
+    if (authorization != null) {
+      requestOptions.headers!.addAll(authorization);
+    }
+    var response = await dio.put(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: requestOptions,
+    );
+    return response.data;
+  }
 }

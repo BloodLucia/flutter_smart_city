@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  const ProfileAvatar({super.key});
+  const ProfileAvatar({super.key, this.onPressed, this.avatarUrl});
+
+  final VoidCallback? onPressed;
+  final String? avatarUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +23,7 @@ class ProfileAvatar extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/normal_avatar.jpg'),
-            ),
+                backgroundImage: AssetImage('assets/images/normal_avatar.jpg')),
             Positioned(
               bottom: 0,
               right: -12,
@@ -32,8 +34,7 @@ class ProfileAvatar extends StatelessWidget {
                 decoration:
                     BoxDecoration(color: context.grey5, shape: BoxShape.circle),
                 child: IconButton(
-                  style: const ButtonStyle(),
-                  onPressed: () {},
+                  onPressed: onPressed,
                   icon: Icon(Icons.camera_alt, color: context.grey),
                   color: Colors.white,
                 ),

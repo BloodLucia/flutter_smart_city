@@ -22,7 +22,7 @@ class MyLoadingButton extends GestureDetector {
             decoration: BoxDecoration(
               color: isLoading
                   ? context.primaryColor.withOpacity(0.2)
-                  : context.primaryColor,
+                  : color ?? context.primaryColor,
               borderRadius: context.lowBorderRadius,
             ),
             child: isLoading

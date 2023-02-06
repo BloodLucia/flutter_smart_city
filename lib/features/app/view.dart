@@ -21,7 +21,7 @@ class AppPage extends GetView<AppController> {
         HomePage(),
         ServiceCategoriesPage(),
         CommunityPage('社区'),
-        ProfilePage('个人中心'),
+        ProfilePage(),
       ],
     );
   }

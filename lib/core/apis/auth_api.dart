@@ -5,8 +5,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:smart_city_getx/core/services/storage.dart';
 import 'package:smart_city_getx/core/utils/http.dart';
 
-import 'user_api.dart';
-
 class AuthAPI {
   /// 登录
   static Future<Either<String, void>> login({
@@ -30,9 +28,9 @@ class AuthAPI {
       StorageService.to.setBool(dotenv.env['STORAGE_USER_LOGIN_KEY']!, true);
 
       /// 保存用户信息，这样就不用每次请求用户数据
-      var profile = await UserAPI.profile();
-      StorageService.to.setString(
-          dotenv.env['STORAGE_USER_PROFILE_KEY']!, jsonEncode(profile));
+      // var profile = await UserAPI.profile();
+      // StorageService.to.setString(
+      //     dotenv.env['STORAGE_USER_PROFILE_KEY']!, jsonEncode(profile));
 
       return right(null);
     } else {
