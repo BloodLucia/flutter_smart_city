@@ -5,7 +5,7 @@ import 'package:smart_city_getx/core/constants/iconfont.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
 import 'package:smart_city_getx/core/utils/validators.dart';
 import 'package:smart_city_getx/core/widgets/gender_selector.dart';
-import 'package:smart_city_getx/core/widgets/rounded_button.dart';
+import 'package:smart_city_getx/core/widgets/loading_button.dart';
 
 import 'controller.dart';
 
@@ -112,10 +112,11 @@ class RegisterPage extends GetView<AuthController> {
                         },
                       ),
                       context.emptySizedHeightBoxNormal,
-                      RoundedButton(
+                      MyLoadingButton(
                         context: context,
                         text: '注册',
                         onTap: signUp,
+                        isLoading: controller.isLoading,
                       ),
                       context.emptySizedHeightBoxLow3x,
                       RichText(

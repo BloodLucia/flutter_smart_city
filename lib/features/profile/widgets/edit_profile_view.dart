@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_city_getx/core/constants/iconfont.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
-import 'package:smart_city_getx/core/widgets/gender_selector.dart';
 import 'package:smart_city_getx/core/widgets/opacity_input_decoration.dart';
 import 'package:smart_city_getx/core/widgets/rounded_button.dart';
 
@@ -68,7 +66,10 @@ class EditProfileView extends StatelessWidget {
                 ),
                 context.emptySizedHeightBoxNormal,
 
-                RoundedButton(context: context, text: '保存'),
+                RoundedButton(
+                  context: context,
+                  text: '保存',
+                ),
               ],
             ),
           ),

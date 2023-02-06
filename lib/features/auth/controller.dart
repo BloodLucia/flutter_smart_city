@@ -12,6 +12,9 @@ class AuthController extends GetxController {
   late final TextEditingController signUpPasswordCtrl;
   late final TextEditingController signUpPhoneNumCtrl;
 
+  final _isLoading = false.obs;
+  get isLoading => _isLoading.value;
+  set isLoading(value) => _isLoading.value = value;
   final _hidePwd = true.obs;
   get hidePwd => _hidePwd.value;
   set hidePwd(value) => _hidePwd.value = value;
@@ -20,6 +23,7 @@ class AuthController extends GetxController {
   set genderValue(value) => _genderValue.value = value;
 
   void login() async {
+    isLoading = true;
     final result = await AuthAPI.login(
         username: usernameCtrl.text, password: passwordCtrl.text);
 
@@ -32,10 +36,12 @@ class AuthController extends GetxController {
         Get.offAndToNamed('/app');
       },
     );
+    isLoading = false;
   }
 
   // 注册
   void signUp() async {
+    isLoading = true;
     final response = await AuthAPI.signUp(
       phoneNumber: signUpPhoneNumCtrl.text,
       userName: signUpUserNameCtrl.text,
@@ -49,6 +55,7 @@ class AuthController extends GetxController {
         Get.toNamed('/login');
       },
     );
+    isLoading = false;
   }
 
   void logout() async {
@@ -74,8 +81,8 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    usernameCtrl = TextEditingController();
-    passwordCtrl = TextEditingController();
+    usernameCtrl = TextEditingController(text: 'shanshan');
+    passwordCtrl = TextEditingController(text: '123456');
     signUpPhoneNumCtrl = TextEditingController();
     signUpUserNameCtrl = TextEditingController();
     signUpPasswordCtrl = TextEditingController();
