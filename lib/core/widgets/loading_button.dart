@@ -26,8 +26,8 @@ class MyLoadingButton extends GestureDetector {
               borderRadius: context.lowBorderRadius,
             ),
             child: isLoading
-                ? CircularProgressIndicator(
-                    color: context.primaryColor, strokeWidth: 2.0)
+                ? const CircularProgressIndicator(
+                    color: Colors.white, strokeWidth: 2.0)
                 : Text(
                     text,
                     style: TextStyle(

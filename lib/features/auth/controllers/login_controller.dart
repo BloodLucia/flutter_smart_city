@@ -39,7 +39,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    usernameCtrl = TextEditingController();
-    passwordCtrl = TextEditingController();
+    usernameCtrl = TextEditingController(text: 'shanying');
+    passwordCtrl = TextEditingController(text: '123456');
   }
 }
