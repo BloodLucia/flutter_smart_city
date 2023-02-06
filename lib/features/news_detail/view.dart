@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/core/extensions/extensions.dart';
-import 'package:smart_city_getx/core/utils/handle_error_image.dart';
 
+import '../../core/extensions/extensions.dart';
 import '../../core/models/news.dart';
+import '../../core/utils/filter_news_content.dart';
+import '../../core/utils/handle_error_image.dart';
+import 'controller.dart';
 
-class NewsDetailPage extends GetView {
+class NewsDetailPage extends GetView<NewsDetailController> {
   const NewsDetailPage({super.key, required this.news});
 
   final News news;
@@ -49,8 +51,12 @@ class NewsDetailPage extends GetView {
             ),
             Container(
               padding: context.paddingNormal,
-              child: Text(news.content!,
-                  style: Theme.of(context).textTheme.bodyLarge),
+              child: Text(
+                filterNewsContent(news.content!),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      height: 1.5,
+                    ),
+              ),
             ),
           ],
         ),

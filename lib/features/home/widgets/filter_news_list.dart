@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_city_getx/core/utils/filter_news_content.dart';
 import 'package:smart_city_getx/core/utils/handle_error_image.dart';
 
 import '../../../core/extensions/extensions.dart';
@@ -44,10 +45,12 @@ class FilterNewsList extends GetView<HomeController> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       context.emptySizedHeightBoxLow,
-                      Text(news.content!,
-                          maxLines: 5,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(color: context.grey)),
+                      Text(
+                        filterNewsContent(news.content!),
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: context.grey),
+                      ),
                     ],
                   ),
                 ),

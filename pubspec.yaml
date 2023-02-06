@@ -45,6 +45,7 @@ dependencies:
   cached_network_image: ^3.2.3
   dartz: ^0.10.1
   image_picker: ^0.8.6+1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
