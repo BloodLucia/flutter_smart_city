@@ -11,6 +11,9 @@ class AuthController extends GetxController {
   final _hidePwd = true.obs;
   get hidePwd => _hidePwd.value;
   set hidePwd(value) => _hidePwd.value = value;
+  final _genderValue = 0.obs;
+  get genderValue => _genderValue.value;
+  set genderValue(value) => _genderValue.value = value;
 
   void login() async {
     final result = await AuthAPI.login(
@@ -30,6 +33,10 @@ class AuthController extends GetxController {
   void logout() async {
     Get.offNamed('/login');
     await UserStore.to.onLogout();
+  }
+
+  void genderOnChanged(int value) {
+    genderValue = value;
   }
 
   @override

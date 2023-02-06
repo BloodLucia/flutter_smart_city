@@ -1,7 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/styles/colors.dart';
 import '../../../core/widgets/rounded_button.dart';
 import '../../../core/extensions/extensions.dart';
 import 'controller.dart';
@@ -15,7 +15,7 @@ class LoginPage extends GetView<AuthController> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+            padding: context.horizontalPaddingNormal,
             child: Form(
               child: Column(
                 children: [
@@ -53,7 +53,7 @@ class LoginPage extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                  context.emptySizedHeightBoxLow2x,
+                  context.emptySizedHeightBoxNormal,
                   RoundedButton(
                     context: context,
                     text: '登录',
@@ -64,13 +64,14 @@ class LoginPage extends GetView<AuthController> {
                     text: TextSpan(
                       text: '还没有账号？',
                       style: TextStyle(color: context.grey, fontSize: 16),
-                      children: const [
+                      children: [
                         TextSpan(
-                          text: '立即注册',
-                          style: TextStyle(
-                            color: AppColors.primary,
-                          ),
-                        ),
+                            text: '立即注册',
+                            style: TextStyle(
+                              color: context.primaryColor,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Get.toNamed('/signup')),
                       ],
                     ),
                   ),

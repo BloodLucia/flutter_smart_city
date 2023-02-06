@@ -38,4 +38,16 @@ class IconFont {
     fontFamily: 'IconFont',
     matchTextDirection: true,
   );
+
+  static const handMale = IconData(
+    0xed7a,
+    fontFamily: 'IconFont',
+    matchTextDirection: true,
+  );
+
+  static const handFemale = IconData(
+    0xed7b,
+    fontFamily: 'IconFont',
+    matchTextDirection: true,
+  );
 }

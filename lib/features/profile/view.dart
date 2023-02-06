@@ -57,15 +57,7 @@ class ProfilePage extends GetView<ProfileController> {
                     context: context,
                     text: '退出登录',
                     color: Colors.redAccent,
-                    onTap: () {
-                      Get.defaultDialog(
-                        title: '提示',
-                        middleText: '您确定要退出登录吗？',
-                        textCancel: '取消',
-                        textConfirm: '确定',
-                        contentPadding: context.paddingNormal,
-                      );
-                    },
+                    onTap: controller.logout,
                   ),
                 ),
               ],

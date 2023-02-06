@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smart_city_getx/core/constants/iconfont.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
+import 'package:smart_city_getx/core/widgets/gender_selector.dart';
 import 'package:smart_city_getx/core/widgets/opacity_input_decoration.dart';
 import 'package:smart_city_getx/core/widgets/rounded_button.dart';
-import 'package:smart_city_getx/features/profile/widgets/gender_container.dart';
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
@@ -22,47 +22,22 @@ class EditProfileView extends StatelessWidget {
                 /// 选择性别
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Container(
-                    //   alignment: Alignment.center,
-                    //   width: 66,
-                    //   height: 66,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: context.lowBorderRadius,
-                    //     color: context.grey4.withOpacity(0.5),
-                    //     border:
-                    //         Border.all(color: context.primaryColor, width: 2),
-                    //   ),
-                    //   child: Icon(IconFont.male, color: context.blue),
+                  children: const [
+                    // GenderSelector(
+                    //   value: 0,
+                    //   icon: IconFont.male,
+                    //   onChanged: (value) {
+                    //     print(value);
+                    //   },
                     // ),
                     // context.emptySizedWidthBoxNormal,
-                    // Container(
-                    //   alignment: Alignment.center,
-                    //   width: 66,
-                    //   height: 66,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: context.lowBorderRadius,
-                    //     color: context.grey4.withOpacity(0.5),
-                    //     // border: Border.all(
-                    //     //   color: context.primaryColor,
-                    //     //   width: 2,
-                    //     // ),
-                    //   ),
-                    //   child: Icon(IconFont.female, color: context.pink),
+                    // GenderSelector(
+                    //   value: 1,
+                    //   icon: IconFont.female,
+                    //   onChanged: (value) {
+                    //     print(value);
+                    //   },
                     // ),
-                    GenderContainer(
-                      context: context,
-                      icon: IconFont.male,
-                      isSelected: false,
-                      gender: 0,
-                    ),
-                    context.emptySizedWidthBoxNormal,
-                    GenderContainer(
-                      context: context,
-                      icon: IconFont.female,
-                      isSelected: true,
-                      gender: 1,
-                    ),
                   ],
                 ),
                 context.emptySizedHeightBoxNormal,
