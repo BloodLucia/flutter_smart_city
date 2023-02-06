@@ -6,6 +6,6 @@ class ProfileController extends GetxController {
   void logout() async {
     await AuthAPI.logout();
     StorageService.to.setBool('isLogin', false);
-    Get.offAllNamed('/login');
+    Get.offNamedUntil('/login', (route) => false);
   }
 }

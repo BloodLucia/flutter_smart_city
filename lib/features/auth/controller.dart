@@ -8,6 +8,10 @@ import '../../core/apis/auth_api.dart';
 class AuthController extends GetxController {
   late final TextEditingController usernameCtrl;
   late final TextEditingController passwordCtrl;
+  late final TextEditingController signUpUserNameCtrl;
+  late final TextEditingController signUpPasswordCtrl;
+  late final TextEditingController signUpPhoneNumCtrl;
+
   final _hidePwd = true.obs;
   get hidePwd => _hidePwd.value;
   set hidePwd(value) => _hidePwd.value = value;
@@ -25,16 +29,34 @@ class AuthController extends GetxController {
       },
       (r) {
         StorageService.to.setBool('isLogin', true);
-        Get.offAllNamed('/app');
+        Get.offAndToNamed('/app');
+      },
+    );
+  }
+
+  // 注册
+  void signUp() async {
+    final response = await AuthAPI.signUp(
+      phoneNumber: signUpPhoneNumCtrl.text,
+      userName: signUpUserNameCtrl.text,
+      password: signUpPasswordCtrl.text,
+      sex: genderValue.toString(),
+    );
+    response.fold(
+      (l) => Get.snackbar('错误', l),
+      (r) {
+        Get.snackbar('提示', '注册成功，请登录');
+        Get.toNamed('/login');
       },
     );
   }
 
   void logout() async {
-    Get.offNamed('/login');
+    Get.offAndToNamed('/login');
     await UserStore.to.onLogout();
   }
 
+  // 选择性別
   void genderOnChanged(int value) {
     genderValue = value;
   }
@@ -44,6 +66,9 @@ class AuthController extends GetxController {
     super.dispose();
     usernameCtrl.dispose();
     passwordCtrl.dispose();
+    signUpPhoneNumCtrl.dispose();
+    signUpUserNameCtrl.dispose();
+    signUpPasswordCtrl.dispose();
   }
 
   @override
@@ -51,5 +76,8 @@ class AuthController extends GetxController {
     super.onInit();
     usernameCtrl = TextEditingController();
     passwordCtrl = TextEditingController();
+    signUpPhoneNumCtrl = TextEditingController();
+    signUpUserNameCtrl = TextEditingController();
+    signUpPasswordCtrl = TextEditingController();
   }
 }

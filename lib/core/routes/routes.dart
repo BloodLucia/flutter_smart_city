@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:smart_city_getx/features/app/binding.dart';
+import 'package:smart_city_getx/core/bindings/bindings.dart';
 import 'package:smart_city_getx/features/auth/binding.dart';
 
 import '../../features/app/view.dart';
@@ -23,7 +23,7 @@ class AppRoutes {
     GetPage(
       name: '/app',
       page: () => const AppPage(),
-      binding: ApplicationBinding(),
+      binding: AppBindings(),
     ),
     GetPage(
       name: '/home',

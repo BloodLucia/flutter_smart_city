@@ -30,7 +30,30 @@ class AuthAPI {
   }
 
   /// 注册
-  static Future signUp() async {}
+  static Future<Either<String, void>> signUp({
+    required String phoneNumber,
+    required String userName,
+    required String password,
+    required String sex,
+  }) async {
+    Map<String, dynamic> data = {
+      'phonenumber': phoneNumber,
+      'userName': userName,
+      'password': password,
+      'sex': sex,
+    };
+    var response =
+        await HttpUtil().post('/api/register', data: jsonEncode(data));
+    if (response['code'] == 200) {
+      return right(null);
+    } else if (response['code'] == 500) {
+      // ignore: avoid_print
+      print(response);
+      return left(response['msg'].toString().split('，')[1]);
+    } else {
+      return left('未知错误');
+    }
+  }
 
   /// 获取用户信息
   static Future<UserMo> profile() async {

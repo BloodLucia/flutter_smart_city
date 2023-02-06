@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/constants/iconfont.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
+import 'package:smart_city_getx/core/utils/validators.dart';
 import 'package:smart_city_getx/core/widgets/gender_selector.dart';
 import 'package:smart_city_getx/core/widgets/rounded_button.dart';
 
@@ -13,6 +14,16 @@ class RegisterPage extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
+    void signUp() {
+      final isValid = formKey.currentState!.validate();
+      if (!isValid) {
+        return;
+      }
+      controller.signUp();
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -20,6 +31,7 @@ class RegisterPage extends GetView<AuthController> {
               padding: context.horizontalPaddingNormal,
               child: Obx(
                 () => Form(
+                  key: formKey,
                   child: Column(
                     children: [
                       Row(
@@ -45,6 +57,7 @@ class RegisterPage extends GetView<AuthController> {
                           style: TextStyle(color: context.grey2)),
                       context.emptySizedHeightBoxNormal,
                       TextFormField(
+                        controller: controller.signUpPhoneNumCtrl,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           labelText: '手机号',
@@ -62,6 +75,7 @@ class RegisterPage extends GetView<AuthController> {
                       ),
                       context.emptySizedHeightBoxLow2x,
                       TextFormField(
+                        controller: controller.signUpUserNameCtrl,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           labelText: '用户名',
@@ -71,11 +85,15 @@ class RegisterPage extends GetView<AuthController> {
                           if (value!.isEmpty) {
                             return '请填写用户名';
                           }
+                          if (!duCheckStringLength(value, 3)) {
+                            return '用户名不能小于 3 个字符';
+                          }
                           return null;
                         },
                       ),
                       context.emptySizedHeightBoxLow2x,
                       TextFormField(
+                        controller: controller.signUpPasswordCtrl,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         obscureText: true,
                         decoration: const InputDecoration(
@@ -87,8 +105,8 @@ class RegisterPage extends GetView<AuthController> {
                             return '请填写密码';
                           }
 
-                          if (value.length < 6) {
-                            return '密码不能小于 6 个字符';
+                          if (value.length < 4) {
+                            return '密码不能小于 4 个字符';
                           }
                           return null;
                         },
@@ -97,9 +115,7 @@ class RegisterPage extends GetView<AuthController> {
                       RoundedButton(
                         context: context,
                         text: '注册',
-                        onTap: () {
-                          print('hello');
-                        },
+                        onTap: signUp,
                       ),
                       context.emptySizedHeightBoxLow3x,
                       RichText(
