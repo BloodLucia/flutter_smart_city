@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/services/storage.dart';
-import 'package:smart_city_getx/core/services/user_store.dart';
 
 import '../../core/apis/auth_api.dart';
 
@@ -56,11 +55,6 @@ class AuthController extends GetxController {
       },
     );
     isLoading = false;
-  }
-
-  void logout() async {
-    Get.offAndToNamed('/login');
-    await UserStore.to.onLogout();
   }
 
   // 选择性別

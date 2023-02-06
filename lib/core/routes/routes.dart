@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/bindings/bindings.dart';
-import 'package:smart_city_getx/features/auth/binding.dart';
 
 import '../../features/app/view.dart';
-import '../../features/auth/login_page.dart';
-import '../../features/auth/register_page.dart';
+import '../../features/auth/bindings/bindings.dart';
+import '../../features/auth/pages/login_page.dart';
+import '../../features/auth/pages/signup_page.dart';
 import '../../features/home/view.dart';
 import '../../features/modules/modules.dart';
 

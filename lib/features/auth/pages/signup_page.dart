@@ -1,15 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/core/constants/iconfont.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
-import 'package:smart_city_getx/core/utils/validators.dart';
-import 'package:smart_city_getx/core/widgets/gender_selector.dart';
-import 'package:smart_city_getx/core/widgets/loading_button.dart';
 
-import 'controller.dart';
+import '../../../core/constants/iconfont.dart';
+import '../../../core/utils/validators.dart';
+import '../../../core/widgets/gender_selector.dart';
+import '../../../core/widgets/loading_button.dart';
+import '../controllers/signup_controller.dart';
 
-class RegisterPage extends GetView<AuthController> {
+class RegisterPage extends GetView<SignUpController> {
   const RegisterPage({super.key});
 
   @override

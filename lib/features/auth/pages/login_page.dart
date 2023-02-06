@@ -1,12 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/core/widgets/loading_button.dart';
 
 import '../../../core/extensions/extensions.dart';
-import 'controller.dart';
+import '../controllers/login_controller.dart';
+import '../../../core/widgets/loading_button.dart';
 
-class LoginPage extends GetView<AuthController> {
+class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
 
   @override
@@ -35,21 +35,12 @@ class LoginPage extends GetView<AuthController> {
                   ),
                 ),
                 context.emptySizedHeightBoxLow2x,
-                Obx(
-                  () => TextFormField(
-                    controller: controller.passwordCtrl,
-                    obscureText: controller.hidePwd,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        onPressed: () =>
-                            controller.hidePwd = !controller.hidePwd,
-                        icon: controller.hidePwd
-                            ? const Icon(Icons.visibility_off)
-                            : const Icon(Icons.visibility),
-                      ),
-                      labelText: '密码',
-                    ),
+                TextFormField(
+                  controller: controller.passwordCtrl,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.lock),
+                    labelText: '密码',
                   ),
                 ),
                 context.emptySizedHeightBoxNormal,
