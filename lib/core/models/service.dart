@@ -1,4 +1,4 @@
-import '../constants/path_constants.dart';
+import '../extensions/extensions.dart';
 
 class ServiceItem {
   int? id;
@@ -28,7 +28,7 @@ class ServiceItem {
     serviceName = json['serviceName'];
     serviceDesc = json['serviceDesc'];
     serviceType = json['serviceType'];
-    imgUrl = '${PathConstants.BASE_PATH}/${json['imgUrl']}';
+    imgUrl = json['imgUrl'].toString().toImageUrl;
     pid = json['pid'];
 
     ///  park/index  => park index

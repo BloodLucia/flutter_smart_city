@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/services/storage.dart';
-import 'package:smart_city_getx/core/services/user_store.dart';
 
 class Global {
   static Future init() async {
@@ -11,8 +10,6 @@ class Global {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     await dotenv.load(fileName: '.env');
     await Get.putAsync<StorageService>(() => StorageService().init());
-
-    Get.put(UserStore());
 
     setSystemUi();
   }

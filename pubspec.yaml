@@ -44,6 +44,7 @@ dependencies:
   flutter_swiper_null_safety_flutter3: ^3.0.0
   cached_network_image: ^3.2.3
   dartz: ^0.10.1
+  image_picker: ^0.8.6+1
 
 dev_dependencies:
   flutter_test:

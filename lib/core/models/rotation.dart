@@ -1,4 +1,4 @@
-import '../constants/path_constants.dart';
+import 'package:smart_city_getx/core/extensions/extensions.dart';
 
 class Rotation {
   int? id;
@@ -29,7 +29,7 @@ class Rotation {
     status = json['status'];
     sort = json['sort'];
     advTitle = json['advTitle'];
-    advImg = '${PathConstants.BASE_PATH}${json['advImg']}';
+    advImg = json['advImg'].toString().toImageUrl;
     servModule = json['servModule'];
     targetId = json['targetId'];
     type = json['type'];

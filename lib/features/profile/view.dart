@@ -28,12 +28,22 @@ class ProfilePage extends GetView<ProfileController> {
                 const ProfileAvatar(),
                 context.emptySizedHeightBoxNormal,
 
-                /// 用户信息
-                const ProfileListItem(text: 'UID', right: Text('1')),
+                ProfileListItem(
+                    text: 'UID',
+                    right: Text(controller.profile.userId.toString())),
                 context.emptySizedHeightBoxLow,
-                const ProfileListItem(text: '积分', right: Text('999')),
+
+                ProfileListItem(
+                    text: '用户名', right: Text(controller.profile.userName!)),
                 context.emptySizedHeightBoxLow,
-                const ProfileListItem(text: '余额', right: Text('999.00')),
+
+                ProfileListItem(
+                    text: '积分',
+                    right: Text(controller.profile.score.toString())),
+                context.emptySizedHeightBoxLow,
+                ProfileListItem(
+                    text: '余额',
+                    right: Text(controller.profile.balance.toString())),
 
                 context.emptySizedHeightBoxNormal,
 

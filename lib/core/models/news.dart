@@ -1,6 +1,7 @@
+import 'package:smart_city_getx/core/extensions/extensions.dart';
+
 class News {
   int? id;
-  String? appType;
   String? cover;
   String? title;
   String? content;
@@ -14,7 +15,6 @@ class News {
 
   News({
     this.id,
-    this.appType,
     this.cover,
     this.title,
     this.content,
@@ -29,8 +29,7 @@ class News {
 
   News.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    appType = json['appType'];
-    cover = json['coder'];
+    cover = json['cover'].toString().toImageUrl;
     title = json['title'];
     content = json['content'];
     publishDate = json['publishDate'];
@@ -46,7 +45,6 @@ class News {
     final Map<String, dynamic> data = <String, dynamic>{};
 
     data['id'] = id;
-    data['appType'] = appType;
     data['cover'] = cover;
     data['title'] = title;
     data['content'] = content;

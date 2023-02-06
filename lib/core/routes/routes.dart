@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/bindings/bindings.dart';
+import 'package:smart_city_getx/core/middlewares/auth_middleware.dart';
 
 import '../../features/app/view.dart';
 import '../../features/auth/bindings/bindings.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
       name: '/app',
       page: () => const AppPage(),
       binding: AppBindings(),
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: '/home',

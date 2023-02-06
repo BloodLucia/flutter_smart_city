@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_city_getx/features/home/controller.dart';
+import 'package:smart_city_getx/core/utils/handle_error_image.dart';
 
 import '../../../core/extensions/extensions.dart';
 import '../../../core/models/news.dart';
 import '../../news_detail/view.dart';
+import '../controller.dart';
 
 class FilterNewsList extends GetView<HomeController> {
   const FilterNewsList({super.key, required this.resources});
@@ -56,10 +57,7 @@ class FilterNewsList extends GetView<HomeController> {
                   height: 132,
                   child: ClipRRect(
                     borderRadius: context.lowBorderRadius,
-                    child: Image.asset(
-                      'assets/images/iphone.jpg',
-                      fit: BoxFit.cover,
-                    ),
+                    child: handleErrorImage(news.cover!),
                   ),
                 ),
               ],

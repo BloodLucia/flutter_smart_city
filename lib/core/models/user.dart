@@ -7,7 +7,7 @@ class UserMo {
   String? sex;
   String? avatar;
   String? idCard;
-  int? balance;
+  double? balance;
   int? score;
 
   UserMo({

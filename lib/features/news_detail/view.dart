@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
+import 'package:smart_city_getx/core/utils/handle_error_image.dart';
 
 import '../../core/models/news.dart';
 
@@ -45,10 +45,7 @@ class NewsDetailPage extends GetView {
             SizedBox(
               height: 200,
               width: double.infinity,
-              child: CachedNetworkImage(
-                imageUrl: 'https://i.328888.xyz/2023/02/03/Nlqzb.jpeg',
-                fit: BoxFit.cover,
-              ),
+              child: handleErrorImage(news.cover!),
             ),
             Container(
               padding: context.paddingNormal,
@@ -58,15 +55,6 @@ class NewsDetailPage extends GetView {
           ],
         ),
       ),
-      // bottomNavigationBar: Container(
-      //   height: 40,
-      //   decoration: const BoxDecoration(color: Colors.white),
-      //   child: Row(
-      //     children: [
-      //       Expanded(child: TextFormField()),
-      //     ],
-      //   ),
-      // ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.primaryColor,
         onPressed: () {

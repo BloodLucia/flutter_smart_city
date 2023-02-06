@@ -32,7 +32,7 @@ class HomeAPI {
 
   /// 请求新闻数据
   static Future<List<News>> fetchAllNewsData({
-    bool cacheDisk = false,
+    bool cacheDisk = true,
   }) async {
     final response = await HttpUtil().get(
       '/press/press/list',

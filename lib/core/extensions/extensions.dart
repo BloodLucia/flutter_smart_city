@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constants/path_constants.dart';
 import '../styles/colors.dart';
 
 extension ContextExtension on BuildContext {
@@ -295,4 +296,8 @@ extension ThemeExtension on BuildContext {
   Color get placeholderColor => isDarkMode
       ? const Color.fromRGBO(235, 235, 245, 0.3)
       : const Color.fromRGBO(60, 60, 67, 0.3);
+}
+
+extension StringExtension on String {
+  String get toImageUrl => '${PathConstants.BASE_PATH}$this';
 }

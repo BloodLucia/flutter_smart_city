@@ -31,7 +31,7 @@ class NewsItemSelector extends GetView<HomeController> {
                 decoration: BoxDecoration(
                   color: controller.categoryIndex == index
                       ? context.primaryColor
-                      : context.grey4.withOpacity(0.4),
+                      : Colors.white,
                   borderRadius: context.normalBorderRadius,
                 ),
                 child: TextButton(

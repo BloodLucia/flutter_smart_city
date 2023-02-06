@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
 import 'package:smart_city_getx/core/constants/path_constants.dart';
-
-import '../services/user_store.dart';
+import 'package:smart_city_getx/core/services/storage.dart';
 
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
@@ -25,8 +23,9 @@ class HttpUtil {
   /// 登录之后要保存 token 至本地，这里从本地获取 token
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
-    if (Get.isRegistered<UserStore>() && UserStore.to.hasToken == true) {
-      headers['Authorization'] = UserStore.to.token;
+    if (StorageService.to.getBool('USER_LOGIN_STATUS') &&
+        StorageService.to.getString('USER_TOKEN') != '') {
+      headers['Authorization'] = StorageService.to.getString('USER_TOKEN');
     }
     return headers;
   }
