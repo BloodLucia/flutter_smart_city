@@ -10,9 +10,7 @@ import 'global.dart';
 void main() async {
   await Global.init();
   runApp(
-    DevicePreview(
-      builder: (context) => const MyApp(),
-    ),
+      const MyApp(),
   );
 }
 
