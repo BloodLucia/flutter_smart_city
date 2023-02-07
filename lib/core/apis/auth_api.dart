@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:smart_city_getx/core/services/storage.dart';
+import 'package:smart_city_getx/core/store/user.dart';
 import 'package:smart_city_getx/core/utils/http.dart';
 
 class AuthAPI {
@@ -22,15 +22,13 @@ class AuthAPI {
       String token = res['token'];
 
       /// 保存 token
-      StorageService.to.setString(dotenv.env['STORAGE_USER_TOKEN_KEY']!, token);
+      StorageService.to.setString('USER_TOKEN', token);
 
       /// 设置登录状态
-      StorageService.to.setBool(dotenv.env['STORAGE_USER_LOGIN_KEY']!, true);
+      StorageService.to.setBool('USER_LOGIN_STATUS', true);
 
-      /// 保存用户信息，这样就不用每次请求用户数据
-      // var profile = await UserAPI.profile();
-      // StorageService.to.setString(
-      //     dotenv.env['STORAGE_USER_PROFILE_KEY']!, jsonEncode(profile));
+      /// 保存用户信息
+      UserStore.to.getProfile();
 
       return right(null);
     } else {
@@ -64,9 +62,6 @@ class AuthAPI {
 
   /// 登出
   static Future logout() async {
-    StorageService.to.remove(dotenv.env['STORAGE_USER_TOKEN_KEY']!);
-    StorageService.to.remove(dotenv.env['STORAGE_USER_PROFILE_KEY']!);
-    StorageService.to.setBool(dotenv.env['STORAGE_USER_LOGIN_KEY']!, false);
     await HttpUtil().post('/logout');
   }
 }

@@ -1,100 +1,121 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
-import 'package:smart_city_getx/core/utils/hide_phonenumber.dart';
 
+import '../../core/store/user.dart';
+import '../../core/utils/format_sex.dart';
+import '../../core/utils/hide_phonenumber.dart';
 import '../../core/widgets/rounded_button.dart';
-import 'controller.dart';
-import 'widgets/edit_profile_view.dart';
+import 'widgets/edit_user_profile.dart';
 import 'widgets/profile_avatar.dart';
 import 'widgets/profile_list_item.dart';
 
-class ProfilePage extends GetView<ProfileController> {
+class ProfilePage extends GetView<UserStore> {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.groupedBackground,
-      appBar: AppBar(title: const Text('个人中心')),
+      appBar: AppBar(
+        title: const Text('个人中心'),
+        actions: [
+          Padding(
+            padding: context.horizontalPaddingLow,
+            child: IconButton(
+              onPressed: () => Get.to(() => const EditUserProfile()),
+              icon: const Icon(Icons.edit),
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              context.emptySizedHeightBoxNormal,
+          child: GetBuilder<UserStore>(
+            builder: (controller) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                context.emptySizedHeightBoxNormal,
 
-              /// 用户头像
-              ProfileAvatar(
-                onPressed: controller.pickImage,
-              ),
-              context.emptySizedHeightBoxNormal,
-
-              ProfileListItem(
-                  text: 'UID', right: controller.user.value.userId.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '用户名',
-                  right: controller.user.value.userName.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '昵称', right: controller.user.value.nickName.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                text: '手机号',
-                right: hidePhoneNumber(
-                    controller.user.value.phonenumber.toString()),
-              ),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '邮箱', right: controller.user.value.email.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '身份证号', right: controller.user.value.idCard.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '积分', right: controller.user.value.score.toString()),
-              context.emptySizedHeightBoxLow,
-
-              ProfileListItem(
-                  text: '余额', right: controller.user.value.balance.toString()),
-              context.emptySizedHeightBoxLow,
-
-              context.emptySizedHeightBoxLow2x,
-
-              /// 编辑资料按钮
-              Padding(
-                padding: context.horizontalPaddingLow,
-                child: RoundedButton(
-                  context: context,
-                  text: '编辑资料',
-                  color: context.primaryColor,
-                  onTap: () => Get.to(() => const EditProfileView()),
+                /// 用户头像
+                ProfileAvatar(
+                  sex: UserStore.to.profile.sex!,
                 ),
-              ),
+                context.emptySizedHeightBoxNormal,
 
-              context.emptySizedHeightBoxLow,
-
-              /// 退出按钮
-              Padding(
-                padding: context.horizontalPaddingLow,
-                child: RoundedButton(
-                  color: Colors.redAccent,
-                  text: '退出登录',
-                  context: context,
-                  onTap: controller.logout,
+                ProfileListItem(
+                  left: 'UID',
+                  right: UserStore.to.profile.userId,
                 ),
-              ),
+                context.emptySizedHeightBoxLow,
 
-              context.emptySizedHeightBoxNormal,
-            ],
+                ProfileListItem(
+                  left: '性别',
+                  right: formatSex(UserStore.to.profile.sex),
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '用户名',
+                  right: UserStore.to.profile.userName,
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '昵称',
+                  right: UserStore.to.profile.nickName,
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                    left: '手机号',
+                    right: hidePhoneNumber(
+                      UserStore.to.profile.phonenumber,
+                    )),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '邮箱',
+                  right: UserStore.to.profile.email,
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '身份证号',
+                  right: UserStore.to.profile.idCard,
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '积分',
+                  right: UserStore.to.profile.score,
+                ),
+                context.emptySizedHeightBoxLow,
+
+                ProfileListItem(
+                  left: '余额',
+                  right: UserStore.to.profile.balance,
+                ),
+
+                context.emptySizedHeightBoxLow2x,
+
+                context.emptySizedHeightBoxLow,
+
+                // /// 退出按钮
+                Padding(
+                  padding: context.horizontalPaddingLow,
+                  child: RoundedButton(
+                    color: Colors.redAccent,
+                    text: '退出登录',
+                    context: context,
+                    onTap: controller.logout,
+                  ),
+                ),
+
+                context.emptySizedHeightBoxNormal,
+              ],
+            ),
           ),
         ),
       ),

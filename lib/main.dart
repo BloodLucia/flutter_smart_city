@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: '/app',
       initialBinding: AppBindings(),
+      navigatorObservers: [AppRoutes.observer],
       getPages: AppRoutes.pages,
     );
   }

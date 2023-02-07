@@ -5,14 +5,12 @@ import 'package:smart_city_getx/core/extensions/extensions.dart';
 class ProfileListItem extends StatelessWidget {
   const ProfileListItem({
     super.key,
-    this.left,
     required this.right,
-    required this.text,
+    required this.left,
   });
 
-  final IconData? left;
-  final String right;
-  final String text;
+  final dynamic right;
+  final String left;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +25,10 @@ class ProfileListItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(text),
-            right.isEmpty || right == 'null'
+            Text(left),
+            right == null || right == ''
                 ? Text('未设置', style: TextStyle(color: context.grey))
-                : Text(right)
+                : Text(right.toString())
           ],
         ),
       ),

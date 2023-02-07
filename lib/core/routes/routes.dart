@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_city_getx/core/bindings/bindings.dart';
 import 'package:smart_city_getx/core/middlewares/auth_middleware.dart';
@@ -10,6 +11,7 @@ import '../../features/home/view.dart';
 import '../../features/modules/modules.dart';
 
 class AppRoutes {
+  static final RouteObserver<Route> observer = RouteObserver();
   static List<GetPage> pages = [
     GetPage(
       name: '/login',

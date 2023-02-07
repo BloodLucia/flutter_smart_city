@@ -6,13 +6,13 @@ class GenderSelector extends StatelessWidget {
     super.key,
     required this.value,
     required this.icon,
-    required this.defaultValue,
+    this.defaultValue,
     required this.onChanged,
   });
 
   final int value;
   final IconData icon;
-  final int defaultValue;
+  final int? defaultValue;
   final Function(int value) onChanged;
   @override
   Widget build(BuildContext context) {

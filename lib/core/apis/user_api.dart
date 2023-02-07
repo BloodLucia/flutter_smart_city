@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+
 import '../models/user.dart';
 import '../utils/http.dart';
 
@@ -8,13 +10,13 @@ class UserAPI {
     return UserMo.fromJson(response['user']);
   }
 
-  /// 修改头像
-  static Future updateAvatar(String filePath) async {
-    var data = {
-      'avatar': filePath,
-    };
-    var res = await HttpUtil().put('/api/common/user', data: data);
-    // ignore: avoid_print
-    print(res);
+  /// 更新信息
+  static Future<Either<String, UserMo>> update(dynamic data) async {
+    var response = await HttpUtil().put('/api/common/user', data: data);
+    if (response['code'] == 200) {
+      return right(await profile());
+    } else {
+      return left(response['msg']);
+    }
   }
 }

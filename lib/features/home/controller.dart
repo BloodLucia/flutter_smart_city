@@ -26,9 +26,14 @@ class HomeController extends GetxController {
     rotationList.value = await HomeAPI.fetchRotationData(cacheDisk: true);
     serviceList.value = await HomeAPI.fetchAllServiceData(cacheDisk: true);
     allNewsList.value = await HomeAPI.fetchAllNewsData(cacheDisk: true);
-    filteredNewsList.value = await HomeAPI.fetchAllNewsData(cacheDisk: true);
     newsCategories.value = await HomeAPI.fetchNewsCategories(cacheDisk: true);
     isLoading = false;
+  }
+
+  void _initFilterredNews() async {
+    var news = await HomeAPI.fetchAllNewsData(cacheDisk: true);
+    filteredNewsList
+        .assignAll(news.where((item) => int.parse(item.type!) == 9));
   }
 
   /// 点击分类切换新闻
@@ -40,8 +45,9 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
+  void onInit() {
+    super.onInit();
     _asyncFetchAllData();
+    _initFilterredNews();
   }
 }

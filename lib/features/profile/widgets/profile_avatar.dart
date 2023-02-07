@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:smart_city_getx/core/extensions/extensions.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  const ProfileAvatar({super.key, this.onPressed, this.avatarUrl});
+  const ProfileAvatar({
+    super.key,
+    this.onPressed,
+    this.avatarUrl,
+    required this.sex,
+  });
 
   final VoidCallback? onPressed;
   final String? avatarUrl;
+  final String sex;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +28,13 @@ class ProfileAvatar extends StatelessWidget {
           fit: StackFit.expand,
           clipBehavior: Clip.none,
           children: [
-            const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/normal_avatar.jpg')),
+            CircleAvatar(
+              backgroundImage: AssetImage(
+                sex == '0'
+                    ? 'assets/images/boy-normal.jpg'
+                    : 'assets/images/girl-normal.jpg',
+              ),
+            ),
             Positioned(
               bottom: 0,
               right: -12,
